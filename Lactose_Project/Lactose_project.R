@@ -26,5 +26,26 @@ hig <- newton(c(A=2,M=1),plot=T)
 continue(mid,x="L",y="A",xmax=2,ymax=4)
 
 ###Correr el modelo en 50 unidades de tiempo
-#run(50,arrest=33.14,after="if(t==33.14)state[\"N\"]<-0",table=T)
+pdf("original_values.pdf")
 run(50)
+title ("Original Values")
+dev.off()
+
+#####Variar la concentracion de A
+s <- c(A=0.2,M=0.5)
+pdf("A_0_2.pdf")
+run(50)
+title ("A=0.2")
+dev.off()
+
+s <- c(A=0.4,M=0.5)
+pdf("A_0_4.pdf")
+run(50)
+title ("A=0.4")
+dev.off()
+
+
+
+
+
+
