@@ -18,9 +18,13 @@ model <- function(t, state, parms) {
 
 ###Definiendo Parametros por default
 p <- c(L=1,c=1,c0=0.05,d=1,delta=0.2,n=5,v=1, h = 2)
-s <- c(A=0,M=0)
+s <- c(A=0,M=0.5)
 plane(xmax=4)
 low <- newton(s,plot=T)
 mid <- newton(c(A=0.8,M=0.2),plot=T)
 hig <- newton(c(A=2,M=1),plot=T)
 continue(mid,x="L",y="A",xmax=2,ymax=4)
+
+###Correr el modelo en 50 unidades de tiempo
+#run(50,arrest=33.14,after="if(t==33.14)state[\"N\"]<-0",table=T)
+run(50)
