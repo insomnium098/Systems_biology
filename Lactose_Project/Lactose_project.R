@@ -20,10 +20,10 @@ model <- function(t, state, parms) {
 p <- c(L=1,c=1,c0=0.05,d=1,delta=0.2,n=5,v=1, h = 2)
 s <- c(A=0,M=0.5)
 plane(xmax=4)
-low <- newton(s,plot=T)
-mid <- newton(c(A=0.8,M=0.2),plot=T)
-hig <- newton(c(A=2,M=1),plot=T)
-continue(mid,x="L",y="A",xmax=2,ymax=4)
+#low <- newton(s,plot=T)
+#mid <- newton(c(A=0.8,M=0.2),plot=T)
+#hig <- newton(c(A=2,M=1),plot=T)
+#continue(mid,x="L",y="A",xmax=2,ymax=4)
 
 ###Correr el modelo en 50 unidades de tiempo
 pdf("original_values.pdf")
@@ -44,8 +44,28 @@ run(50)
 title ("A=0.4")
 dev.off()
 
+###Punto 4: Phase-plane with nullclines
+plane(add=T)
+###Add rajectory
+run(traject = T)
+
+###Phase portrait
+plane(tstep=0.2,portrait=T)
+
+###La funcion newton() encuentra un estado estable cerca del estado inicial
+##Definieno de nuevo los parametros iniciales
+s <- c(A=0,M=0.5)
+###Plot con vector field 
+
+pdf("Punto_4.pdf")
+plane(xmax=4, vector = TRUE, tstep=0.2, portrait = T)
 
 
+low <- newton(s,plot=T)
+mid <- newton(c(A=0.8,M=0.2),plot=T)
+hig <- newton(c(A=2,M=1),plot=T)
+dev.off()
 
 
+####Punto 5
 
