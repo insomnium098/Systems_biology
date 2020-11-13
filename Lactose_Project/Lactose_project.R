@@ -7,6 +7,7 @@ dir.create("P2")
 dir.create("P3")
 dir.create("P4")
 dir.create("P5")
+dir.create("P6")
 
 #####Crear ruta de las carpetas
 working_directory <- getwd()
@@ -124,6 +125,24 @@ mid <- newton(c(A=0.8,M=0.2),plot=T)
 hig <- newton(c(A=2,M=1),plot=T)
 title("Lactose = 1.5")
 dev.off()
+
+##########
+##########Punto 6
+##########
+
+###Plot the equilibrium M value and its stability as a function of L
+p <- c(L=1,c=1,c0=0.05,d=1,delta=0.2,n=5,v=1, h = 2)
+s <- c(A=0,M=0.5)
+plane(xmax=4)
+low <- newton(s,plot=T)
+mid <- newton(c(A=0.8,M=0.2),plot=T)
+pdf(paste0(working_directory,"/P6/P6.pdf"))
+continue(mid,x="L",y="M",xmax=2,ymax=4)
+low <- newton(s,plot=T)
+mid <- newton(c(A=0.8,M=0.2),plot=T)
+#high <- newton(c(A=2,M=1),plot=T)
+dev.off()
+
 
 
 
